@@ -43,35 +43,29 @@ function Container() {
         d.y = centerY - 100; 
       } if(d.data.name === 'New York Sites') {
         d.x = centerX - 200;
-        d.y = centerY + 100; // Adjust the margin bottom value as needed
+        d.y = centerY + 100; 
       } 
       if(d.data.name === 'New Jersey Site') {
-        // Margin bottom for node 'b'
-        d.x = centerX ; // Center horizontally
-        d.y = centerY + 100; // Adjust the margin bottom value as needed
+        d.x = centerX ; 
+        d.y = centerY + 100; 
       } if(d.data.name === 'Vermont Site') {
-        // Margin bottom for node 'b'
-        d.x = centerX + 200; // Center horizontally
-        d.y = centerY + 100; // Adjust the margin bottom value as needed
+        d.x = centerX + 200; 
+        d.y = centerY + 100; 
       } if(d.data.name === 'Massachussets Site') {
-        // Margin bottom for node 'b'
-        d.x = centerX + 400; // Center horizontally
-        d.y = centerY + 100; // Adjust the margin bottom value as needed
+        d.x = centerX + 400;
+        d.y = centerY + 100; 
       } if(d.data.name === 'California Site') {
-        // Margin bottom for node 'b'
-        d.x = centerX + 600; // Center horizontally
-        d.y = centerY + 100; // Adjust the margin bottom value as needed
+        d.x = centerX + 600; 
+        d.y = centerY + 100; 
       } 
     });
 
-    // Create a d3 drag handler
     const drag = d3
       .drag()
       .on('start', onDragStart)
       .on('drag', onDrag)
       .on('end', onDragEnd);
 
-    // Draw links
     const links = svg
       .selectAll('.link')
       .data(root.links())
@@ -84,7 +78,7 @@ function Container() {
         );
       });
 
-    // Draw nodes as square containers and make them draggable
+    
     const nodes = svg
       .selectAll('.node')
       .data(root.descendants())
@@ -92,36 +86,32 @@ function Container() {
       .append('g')
       .attr('class', 'node')
       .attr('transform', (d) => `translate(${d.x},${d.y})`)
-      .call(drag); // Apply the drag behavior to the nodes
+      .call(drag); 
 
     nodes
       .append('rect')
-      .attr('width', 180) // Adjust the width of the square
-      .attr('height', 40) // Adjust the height of the square
-      .attr('x', -90) // Offset to center the square
-      .attr('y', -20) // Offset to center the square
-      .style('fill', '#007acc'); // Fill color for the square
+      .attr('width', 180) 
+      .attr('height', 40) 
+      .attr('x', -90) 
+      .attr('y', -20) 
+      .style('fill', '#007acc'); 
 
     nodes
       .append('text')
       .attr('dy', '0.35em')
       .attr('text-anchor', 'middle')
-      .style('fill', 'white') // Text color
-      .text((d) => d.data.name); // Display node name
+      .style('fill', 'white') 
+      .text((d) => d.data.name);
 
-    // Drag start function
     function onDragStart(event, d) {
       d3.select(this).raise().classed('active', true);
     }
 
-    // Drag function
     function onDrag(event, d) {
-      // Move the dragged node and its outgoing edges
       d.x = event.x;
       d.y = event.y;
       d3.select(this).attr('transform', `translate(${d.x},${d.y})`);
 
-      // Update the positions of connected edges
       links.each(function (linkData) {
         if (linkData.source === d) {
           d3.select(this).attr('d', () => {
@@ -139,7 +129,6 @@ function Container() {
         }
       });
 
-      // Update the position of edges connected to the dragged node
       links.each(function (linkData) {
         if (linkData.target === d) {
           d3.select(this).attr('d', () => {
@@ -158,7 +147,6 @@ function Container() {
       });
     }
 
-    // Drag end function
     function onDragEnd(event, d) {
       d3.select(this).classed('active', false);
     }

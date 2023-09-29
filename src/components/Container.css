@@ -1,0 +1,48 @@
+/* Container.css */
+
+/* Style the tree container */
+.tree-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+  
+  /* Style the SVG */
+  .tree-container svg {
+    background-color: #e0e0e0; /* Change the background color of the SVG */
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the nodes and their text */
+  .node {
+    cursor: grab;
+    background-color: #007acc; /* Change the background color of the nodes */
+    color: white; /* Change the text color of the nodes */
+  }
+  
+  .node rect {
+    rx: 5; /* Rounded corners */
+  }
+  
+  /* Active node style during drag */
+  .node.active {
+    cursor: grabbing;
+  }
+  
+  /* Style the links */
+  .link {
+    fill: none;
+    stroke: #007acc;
+    stroke-width: 2;
+  }
+  
+  /* Style the text */
+  text {
+    font-size: 14px;
+    font-weight: bold;
+    pointer-events: none; /* Prevent text selection during dragging */
+  }
+  

@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import './Container.css'; // Add your custom styles here
+import './Container.css'; 
 import * as d3 from 'd3';
 
 function Container() {
   const treeContainerRef = useRef(null);
 
   useEffect(() => {
-    // Create your D3 tree layout and data
     const data = {
       name: 'Google',
       children: [
@@ -18,8 +17,8 @@ function Container() {
       ],
     };
 
-    const width = window.innerWidth; // Use the entire window width
-    const height = window.innerHeight; // Use the entire window height
+    const width = window.innerWidth; 
+    const height = window.innerHeight; 
 
     const svg = d3
       .select(treeContainerRef.current)
@@ -27,26 +26,23 @@ function Container() {
       .attr('width', width)
       .attr('height', height);
 
-    // Create a tree layout
+    
     const treeLayout = d3.tree().size([width, height]);
     
 
     const root = d3.hierarchy(data);
     treeLayout(root);
-
-    // Calculate the center of the SVG canvas
+    
     const centerX = width / 2;
     const centerY = height / 2;
 
-    // Adjust the positions of tree nodes relative to the center
+    
     root.descendants().forEach((d) => {
       if (d.data.name === 'Google') {
-        // Margin top for node 'a'
-        d.x = centerX; // Center horizontally
-        d.y = centerY - 100; // Adjust the margin top value as needed
+        d.x = centerX; 
+        d.y = centerY - 100; 
       } if(d.data.name === 'New York Sites') {
-        // Margin bottom for node 'b'
-        d.x = centerX - 200; // Center horizontally
+        d.x = centerX - 200;
         d.y = centerY + 100; // Adjust the margin bottom value as needed
       } 
       if(d.data.name === 'New Jersey Site') {

@@ -13,8 +13,8 @@ const DropTarget = ({ onDrop }) => {
       className="drop-target"
       ref={drop}
       style={{
-        minHeight: '50px', // Adjust this to set the minimum height for drop target
-        border: '2px dashed #ccc', // Add a dashed border to indicate drop target
+        minHeight: '50px', 
+        border: '2px dashed #ccc',
         padding: '10px',
       }}
     >
